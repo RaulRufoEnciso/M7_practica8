@@ -1,7 +1,7 @@
 import connect
 
 # Sentencia sql
-sql = f'DELETE FROM personas WHERE id_persona= %s'
+sql = 'DELETE FROM personas WHERE id_persona=%s'
 
 # Solicitar datos al Usuario
 id_persona = input('Ingrese el id del registro a eliminar: ')
@@ -20,4 +20,5 @@ print(f'Registro eliminado: {registro_eliminado}')
 
 # Cerrar cursor
 connect.cur.close()
+connect.conn.close()
 

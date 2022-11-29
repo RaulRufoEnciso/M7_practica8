@@ -21,5 +21,4 @@ resultados = cur.fetchall()
 print(resultados)
 
 # Cerrar conexion
-cur.close()
-conn.close()
+# conn.close()
