@@ -1,26 +1,20 @@
-#importar modul psycopg2
-import psycopg2
+import connect
 
-#connexio bbdd
-conexion=psycopg2.connect(user='postgres', password='hola', host='127.0.0.1', port='5432', database='db_personas')
+def select():
+    #sentencia sql
+    sql='SELECT * FROM personas WHERE id_persona=%s'
 
-#cursor
-cursor=conexion.cursor()
+    #executar sentencia sql
+    id_persona=input('id del registre que vols mostrar: ')
 
-#sentencia sql
-sql='SELECT * FROM personas WHERE idpersona=%s'
+    #guardar resultat a variable registro
+    connect.cur.execute(sql,id_persona)
 
-#executar sentencia sql
-idpersona=input('id del registre que vols mostrar: ')
+    registro=connect.cur.fetchone()
 
-#guardar resultat a variable registro
-cursor.execute(sql,idpersona)
+    #output
+    print(registro)
 
-registro=cursor.fetchone()
-
-#output
-print(registro)
-
-#tancar connexio
-cursor.close()
-conexion.close()
+    #tancar connexio
+    connect.cur.close()
+    connect.conn.close()
