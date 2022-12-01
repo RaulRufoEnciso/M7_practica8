@@ -1,30 +1,24 @@
-#importar modul psycopg2
-import psycopg2
+import connect
 
-#connexio bbdd
-conexion=psycopg2.connect(user='postgres', password='hola', host='127.0.0.1', port='5432', database='db_personas')
+def insert():
+    #SENTENCIA SQL
+    sql='INSERT INTO personas (nombre,apellido,edad) VALUES(%s,%s,%s)'
 
-#cursor
-cursor=conexion.cursor()
+    #solicitud noms
+    nombre=input('nom:')
+    apellido=input('cognom: ')
+    edad=input('edat: ')
 
-#SENTENCIA SQL
-sql='INSERT INTO personas (nombre,apellido,edad) VALUES(%s,%s,%s)'
+    #recolecció
+    datos=(nombre,apellido,edad)
 
-#solicitud noms
-nombre=input('nom:')
-apellido=input('cognom: ')
-edad=input('edat: ')
+    connect.cur.execute(sql,datos)
 
-#recolecció
-datos=(nombre,apellido,edad)
+    connect.conn.commit()
 
-cursor.execute(sql,datos)
+    registros=connect.cur.rowcount
 
-conexion.commit()
+    print(f'Registre insertat: {registros}')
 
-registros=cursor.rowcount
-
-print(f'registre insertat: {registros}')
-
-cursor.close()
-conexion.close()
+    connect.cur.close()
+    connect.conn.close()
