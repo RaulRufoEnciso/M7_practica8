@@ -4,9 +4,9 @@ import connect
 sql = 'UPDATE personas SET nombre=%s, apellido=%s, edad=%s WHERE id_persona=%s'
 
 id_persona = input('Ingrese el id de la persona que desea modificar: ')
-nombre = input('Ingrese el nombre de la persona que desea modificar: ')
-apellido = input('Ingrese el apellido de la persona que desea modificar: ')
-edad = input('Ingrese el edad de la persona que desea modificar: ')
+nombre = input('Ingrese el nuevo nombre: ')
+apellido = input('Ingrese el nuevo apellido: ')
+edad = input('Ingrese la nueva edads: ')
 
 # Recogida de datos
 datos = (nombre,apellido,edad,id_persona)
